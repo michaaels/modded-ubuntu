@@ -25,11 +25,11 @@ package() {
         echo -e "\n${R} [${W}-${R}]${G} Packages already installed."${W}
     else
         packs=(pulseaudio proot-distro wget)
+        apt update -y
+        apt upgrade -y
         for hulu in "${packs[@]}"; do
             type -p "$hulu" &>/dev/null || {
                 echo -e "\n${R} [${W}-${R}]${G} Installing package : ${Y}$hulu${C}"${W}
-                apt update -y
-                apt upgrade -y
                 apt install "$hulu" -y
             }
         done
